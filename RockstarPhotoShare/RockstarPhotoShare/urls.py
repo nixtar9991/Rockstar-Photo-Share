@@ -20,6 +20,8 @@ from django.contrib import admin
 urlpatterns =patterns('',url(r'^$', 'rockstar.views.home', name='home'),
                      url(r'^admin/',include(admin.site.urls)),
                      url(r'^register/$', 'rockstar.views.register', name='register'),
-                     url(r'^login/$', 'rockstar.views.login', name='login'),
-                     url(r'^logout/$', 'rockstar.views.logout', name='logout'),)
+                     url(r'^login/$', 'rockstar.views.user_login', name='login'),
+                     url(r'^login/rockstar/logout/', 'rockstar.views.user_logout', name='logout'),
+                     url(r'^index/$', 'rockstar.views.index', name='index'),
+                     url(r'^login/rockstar/index', 'rockstar.views.index'),)
 
