@@ -3,7 +3,7 @@ from django.http import *
 from rockstar.forms import UserForm, UserProfileForm
 from django.contrib.auth.decorators import login_required
 from django.template import RequestContext
-from django.contrib.auth import authenticate, login ,logout
+from django.contrib.auth import authenticate, login , logout
 from django.http import HttpResponseRedirect, HttpResponse
 
 # Create your views here.
@@ -20,7 +20,7 @@ def user_logout(request):
     logout(request)
 
     # Take the user back to the homepage.
-    return HttpResponseRedirect('rockstar/home.html')
+    return HttpResponseRedirect('/home')
 
 
 def register(request):
@@ -79,7 +79,7 @@ def register(request):
 
     # Render the template depending on the context.
     return render_to_response(
-            'rockstar/register.html',
+            '/register.html',
             {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
             context)
     
@@ -109,7 +109,7 @@ def user_login(request):
                 # If the account is valid and active, we can log the user in.
                 # We'll send the user back to the homepage.
                 login(request, user)
-                return HttpResponseRedirect('rockstar/index.html')
+                return HttpResponseRedirect('/index')
             else:
                 # An inactive account was used - no logging in!
                 return HttpResponse("Your account is disabled.")
